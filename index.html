@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<head>
+    <title>Сообщения</title>
+</head>
+<body>
+    <h1>Сообщения</h1>
+    <div id="messages">
+
+    </div>
+    <script>
+        fetch('/messages')
+        .then(res => res.json())
+        .then(result => {
+            let text = '';
+            result.forEach(e => {
+                text += `<div>${e.message}</div>`;
+            });
+            document.querySelector('#messages').innerHTML = text;
+        });
+    </script>
+</body>
